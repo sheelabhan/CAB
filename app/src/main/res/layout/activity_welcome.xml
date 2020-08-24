@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cab"
+        android:id="@+id/image"
+        />
+
+    <Button
+        android:id="@+id/welcome_driver_btn"
+
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginRight="50dp"
+        android:background="@android:color/background_light"
+        android:text="Driver"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/welcome_customer_btn"
+
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/welcome_driver_btn"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginRight="50dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Customer"
+        android:textSize="20sp"
+        android:textColor="@android:color/background_light" />
+</RelativeLayout>

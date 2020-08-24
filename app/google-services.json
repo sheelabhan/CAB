@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "118795692675",
+    "firebase_url": "https://cabapp-c20db.firebaseio.com",
+    "project_id": "cabapp-c20db",
+    "storage_bucket": "cabapp-c20db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118795692675:android:ec62ce2645979e93a009b6",
+        "android_client_info": {
+          "package_name": "com.sheela.cab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118795692675-gsvjh7h24uqi7t7r443319bar0rohvak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ4dGC_USHHKX18Eor1VvibvIM13ydPWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118795692675-gsvjh7h24uqi7t7r443319bar0rohvak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

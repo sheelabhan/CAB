@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Main2Activity">
+
+    <RadioGroup
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_weight="1"
+            style="@style/radiostyle"
+            android:id="@+id/rdcity"
+            android:text="city" />
+
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/rdhole"
+            style="@style/radiostyle"
+            android:text="hole" />
+
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/rdtiger"
+            style="@style/radiostyle"
+            android:text="tiger" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imgehero"
+        android:layout_width="match_parent"
+        android:layout_height="446dp"
+        android:src="@drawable/citylight" />
+
+    <Button
+
+        android:id="@+id/btnclose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:textSize="30dp" />
+
+</LinearLayout>
