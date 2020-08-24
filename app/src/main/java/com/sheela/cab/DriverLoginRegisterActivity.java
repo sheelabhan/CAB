@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -56,8 +57,49 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                 RegisterDriver(email,password);
             }
         });
+        DriverLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email= EmailDriver.getText().toString();
+                String password= PasswordDriver.getText().toString();
+               SignInDriver( email,password);
+            }
+        });
     }
 
+    private void SignInDriver(String email, String password) {
+        if(TextUtils.isEmpty(email))
+        {
+            Toast.makeText(DriverLoginRegisterActivity.this, "Please write email...",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(password))
+        {
+            Toast.makeText(DriverLoginRegisterActivity.this, "Please write password...",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else{
+            loadingBar.setTitle("Driver Login");
+            loadingBar.setMessage("Please wait, while we are login your credentials...");
+            loadingBar.show();
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(DriverLoginRegisterActivity.this, " Driver Login Successfully", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                        Intent intent= new Intent( DriverLoginRegisterActivity.this, DriversMapActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(DriverLoginRegisterActivity.this,
+                                "Login is unsuccessful", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+                }
+            });
+        }
+    }
 
 
     private void RegisterDriver(String email, String password) {
@@ -81,6 +123,8 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Toast.makeText(DriverLoginRegisterActivity.this, " Driver Register Successfully", Toast.LENGTH_SHORT).show();
                    loadingBar.dismiss();
+                        Intent intent= new Intent( DriverLoginRegisterActivity.this, DriversMapActivity.class);
+                        startActivity(intent);
                     }
                     else{
                         Toast.makeText(DriverLoginRegisterActivity.this,
