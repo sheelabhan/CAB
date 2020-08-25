@@ -16,6 +16,8 @@ import android.widget.Button;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.GeoQuery;
+import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -46,9 +48,13 @@ public class CustomersMapActivity extends FragmentActivity implements OnMapReady
     private Button CallCabButton;
     private String customerID;
     private LatLng CustomerPickupLocation;
+    private int radius =1;
+    private Boolean driverFound= false;
+    private String driverFoundID;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private DatabaseReference CustomerDatabaseRef;
+    private DatabaseReference DriverLocationRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,7 @@ public class CustomersMapActivity extends FragmentActivity implements OnMapReady
         currentUser = mAuth.getCurrentUser();
         customerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         CustomerDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Customers Request");
+        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("Drivers Available");
         CustomerLogoutButton = findViewById(R.id.customer_logout_btn);
         CallCabButton = findViewById(R.id.customer_callcab_btn);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -77,7 +84,7 @@ public class CustomersMapActivity extends FragmentActivity implements OnMapReady
             @Override
             public void onClick(View view) {
 //                GeoFire geoFire = new GeoFire(CustomerDatabaseRef);
-                GeoFire geoFire= new GeoFire(CustomerDatabaseRef);
+                GeoFire geoFire = new GeoFire(CustomerDatabaseRef);
                 geoFire.setLocation(customerID,
                         new GeoLocation(lastLocation.getLatitude(), lastLocation.getLongitude()),
                         new GeoFire.CompletionListener() {
@@ -86,14 +93,55 @@ public class CustomersMapActivity extends FragmentActivity implements OnMapReady
 
                                 CustomerPickupLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
                                 mMap.addMarker(new MarkerOptions().position(CustomerPickupLocation).title("Pickup Customer from here"));
-
+                                CallCabButton.setText("Getting Your Driver");
+                           GetClosestDriverCab();
                             }
                         });
 
 
+            }
+        });
+    }
+
+    private void GetClosestDriverCab() {
+        GeoFire geoFire= new GeoFire(DriverLocationRef);
+        GeoQuery geoQuery= geoFire.queryAtLocation(new GeoLocation(CustomerPickupLocation.latitude, CustomerPickupLocation.longitude),radius);
+       geoQuery.removeAllListeners();
+
+        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+            @Override
+            public void onKeyEntered(String key, GeoLocation location) {
+                if(!driverFound)
+                {
+                    driverFound= true;
+                    driverFoundID = key;
+                }
+            }
+
+            @Override
+            public void onKeyExited(String key) {
+
+            }
+
+            @Override
+            public void onKeyMoved(String key, GeoLocation location) {
+
+            }
+
+            @Override
+            public void onGeoQueryReady() {
+                if(!driverFound){
+                    radius= radius + 1;
+                    GetClosestDriverCab();
+                }
+            }
+
+            @Override
+            public void onGeoQueryError(DatabaseError error) {
 
             }
         });
+
     }
 
 

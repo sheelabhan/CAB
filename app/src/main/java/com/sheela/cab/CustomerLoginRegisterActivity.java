@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 public class CustomerLoginRegisterActivity extends AppCompatActivity {
    private Button CustomerLoginButton, CustomerRegisterButton;
@@ -24,6 +25,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
     private EditText EmailCustomer, PasswordCustomer;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
+    private DatabaseReference CustomerDatabaseRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +124,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Toast.makeText(CustomerLoginRegisterActivity.this, "Customer Register Successfully", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+
                     }
                     else{
                         Toast.makeText(CustomerLoginRegisterActivity.this,
