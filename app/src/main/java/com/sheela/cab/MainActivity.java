@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                 e.printStackTrace();
                 }finally {
-                    Intent  intent= new Intent(MainActivity.this, WelcomeActivity.class);
+                    Intent  intent= new Intent(MainActivity.this,
+                            WelcomeActivity.class);
                     startActivity(intent);
                 }
             }
