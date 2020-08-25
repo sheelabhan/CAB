@@ -48,6 +48,7 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
     private FirebaseUser currentUser;
     private Boolean currentLogoutDriverStatus = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +72,13 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
 
             }
         });
+
+
     }
 
+    private void GetAssignedCustomerRequest() {
 
+    }
 
 
     @Override
