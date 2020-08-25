@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -87,6 +88,8 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Toast.makeText(CustomerLoginRegisterActivity.this, "Customer Login Successfully", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+                        Intent intent = new Intent (CustomerLoginRegisterActivity.this, CustomersMapActivity.class);
+                        startActivity(intent);
                     }
                     else{
                         Toast.makeText(CustomerLoginRegisterActivity.this,

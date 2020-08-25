@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context=".DriversMapActivity" />
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <fragment
+
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        tools:context=".DriversMapActivity" />
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/driver_logout_btn"
+        android:layout_width="179dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="3dp"
+        android:text="LOGOUT"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/driver_setting_btn"
+        android:layout_width="210dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="19dp"
+        android:layout_toStartOf="@+id/driver_logout_btn"
+        android:text="SETTINGS"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp" />
+
+</RelativeLayout>
