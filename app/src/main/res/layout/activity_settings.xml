@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+
+    <ImageView
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/close" />
+
+    <ImageView
+        android:id="@+id/save_button"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp"
+        app:srcCompat="@drawable/save_edited_info" />
+
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/profile_image"
+    android:layout_width="353dp"
+    android:layout_height="193dp"
+    android:layout_below="@+id/save_button"
+    android:src="@drawable/profile"
+
+    android:layout_marginTop="82dp"
+    app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/change_picture_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/save_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="179dp"
+        android:text="Change Picture"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/change_picture_btn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="136dp"
+        android:hint="your Name" />
+
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="20dp"
+        android:hint="your Phone Number"
+        android:inputType="number" />
+
+
+    <EditText
+        android:id="@+id/driver_car_name"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone_number"
+        android:layout_alignBottom="@+id/phone_number"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="-68dp"
+        android:hint="your Phone Number"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
