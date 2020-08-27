@@ -9,16 +9,16 @@
 
     <ImageView
         android:id="@+id/close_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="54dp"
+        android:layout_height="37dp"
         app:srcCompat="@drawable/close" />
 
     <ImageView
         android:id="@+id/save_button"
-        android:layout_width="78dp"
-        android:layout_height="wrap_content"
+        android:layout_width="74dp"
+        android:layout_height="31dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="13dp"
+        android:layout_marginEnd="17dp"
         app:srcCompat="@drawable/save_edited_info" />
 
 <de.hdodenhof.circleimageview.CircleImageView

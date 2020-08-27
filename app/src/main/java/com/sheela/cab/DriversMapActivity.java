@@ -13,6 +13,8 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -34,8 +36,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DriversMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -56,6 +61,9 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
     private String driverID, customerID="";
     Marker PickUpMarker;
    private ValueEventListener  AssignedCustomerPickUpRefListner;
+    private TextView txtName, txtPhone;
+    private CircleImageView profilePic;
+    private RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +74,10 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
         driverID= mAuth.getCurrentUser().getUid();
         LogoutDriverButton=findViewById(R.id.driver_logout_btn);
         SettingsDriverButton=findViewById(R.id.driver_setting_btn);
+        txtName = findViewById(R.id.name_customer);
+        txtPhone = findViewById(R.id.phone_customer);
+        profilePic = findViewById(R.id.profile_image_customer);
+        relativeLayout = findViewById(R.id.rell2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -102,6 +114,8 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
             if(dataSnapshot.exists()){
                 customerID = dataSnapshot.getValue().toString();
                 GetAssignedCustomerPickUpLocation();
+                relativeLayout.setVisibility(View. VISIBLE);
+                GetAssignedCustomerInformation();
             }
             else{
                 customerID="";
@@ -111,6 +125,7 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
                 if(AssignedCustomerPickUpRefListner !=null){
                     AssignedCustomerPickUpRef.removeEventListener(AssignedCustomerPickUpRefListner);
                 }
+                relativeLayout.setVisibility(View.GONE);
             }
         }
 
@@ -281,5 +296,32 @@ public class DriversMapActivity extends FragmentActivity implements OnMapReadyCa
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+    private void GetAssignedCustomerInformation() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Users").child("Customers").child(customerID);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
+                    String name = dataSnapshot.child("name").getValue().toString();
+                    String phone = dataSnapshot.child("phone").getValue().toString();
+                    String car = dataSnapshot.child("car").getValue().toString();
+                    txtName.setText(name);
+                    txtPhone.setText(phone);
+
+
+                    if (dataSnapshot.hasChild("image")) {
+                        String image = dataSnapshot.child("image").getValue().toString();
+                        Picasso.get().load(image).into(profilePic);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -42,5 +42,56 @@
         android:text="SETTINGS"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp" />
+    <RelativeLayout
+        android:id="@+id/rell2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+
+        android:background="@color/colorPrimaryDark">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image_customer"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:padding="3dp"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/name_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/profile_image_customer"
+            android:text="Customer Name"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/phone_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/profile_image_customer"
+            android:layout_below="@id/name_customer"
+            android:text="Customer Phone Number"
+            android:textColor="@android:color/white"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_phone_24"
+            android:tint="@android:color/black"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
 </RelativeLayout>
