@@ -10,34 +10,36 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <fragment
 
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        tools:context=".DriversMapActivity" />
+        <fragment
+
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-176dp"
+            android:layout_marginBottom="9dp"
+            tools:context=".DriversMapActivity" />
     </RelativeLayout>
-
 
 
     <Button
         android:id="@+id/driver_logout_btn"
-        android:layout_width="179dp"
-        android:layout_height="65dp"
+        android:layout_width="127dp"
+        android:layout_height="64dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="55dp"
         android:text="LOGOUT"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/driver_setting_btn"
-        android:layout_width="210dp"
-        android:layout_height="76dp"
-        android:layout_marginEnd="19dp"
+        android:layout_width="188dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="41dp"
         android:layout_toStartOf="@+id/driver_logout_btn"
         android:text="SETTINGS"
         android:textColor="@color/colorPrimary"

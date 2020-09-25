@@ -7,11 +7,10 @@
     tools:context=".WelcomeActivity">
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/cab"
-        android:id="@+id/image"
-        />
+        android:src="@drawable/cab" />
 
     <Button
         android:id="@+id/welcome_driver_btn"

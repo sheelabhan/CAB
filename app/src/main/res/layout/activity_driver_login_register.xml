@@ -22,37 +22,45 @@ android:orientation="vertical"
         android:textStyle="bold" />
     <EditText
         android:id="@+id/email_driver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="307dp"
+        android:layout_height="59dp"
         android:layout_below="@+id/textView2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="70dp"
         android:ems="10"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:hint="Email.."
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password_driver"
-        android:layout_width="wrap_content"
+        android:layout_width="321dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/email_driver"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="66dp"
         android:layout_marginEnd="63dp"
         android:ems="10"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/password"
         android:hint="Password...."
         android:inputType="numberPassword" />
 
     <Button
         android:id="@+id/driver_login_btn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/password_driver"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="148dp"
-        android:background="@color/colorAccent"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="133dp"
+        android:background="@drawable/button"
+
+
         android:text="Login" />
 
     <TextView
@@ -61,22 +69,23 @@ android:orientation="vertical"
         android:layout_height="38dp"
         android:layout_below="@+id/driver_login_btn"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="94dp"
         android:text="Don't have an account?"
         android:textColor="@android:color/holo_red_dark" />
 
     <Button
         android:id="@+id/driver_register_btn"
-        android:layout_width="259dp"
-        android:layout_height="77dp"
+        android:layout_width="209dp"
+        android:layout_height="76dp"
         android:layout_below="@+id/driver_register_link"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="106dp"
-        android:background="@android:color/holo_red_dark"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="99dp"
+
+        android:background="@drawable/button"
         android:text="Register"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
         android:textSize="20sp" />
